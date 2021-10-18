@@ -2,10 +2,10 @@
 
 # nombreBD_BK-yearMonthDay-horaMinutoSegundo
 # Crear carpeta BACKUPS en la Raiz y en ella la carpeta mysql.
-# mkdir -p /BACKUPS/mysql
+# mkdir -p /BACKUPS/MySQL
 
 # Carpeta destino 
-DEST=/BACKUPS/mysql
+DEST=/BACKUPS/MySQL
 
 ## Banner
 echo ""
