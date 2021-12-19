@@ -5,11 +5,19 @@
 # mkdir -p /BACKUPS/MySQL
 
 # Carpeta destino 
-DEST=/BACKUPS/MySQL
+DEST=/BACKUPS/MySQL/
 
 ## Banner
 echo ""
 echo " *** BACKUP MYSQL ***"
+
+# Variables
+Fecha=$(date +"%Y%m%d")
+Hora=$(date +"%H%M%S")
+File=$db"_BK-"
+fileExt=".sql.gz"
+guion="-"
+finalFile=$File$Fecha$guion$Hora$fileExt
 
 ## Config mysql
 HOST="localhost"
@@ -26,14 +34,6 @@ stty $STTY_SAVE
 echo
 read -p "- Ingrese Base de Datos: " db
 read -p "- Verbosidad (s/n): " verb
-
-# Variables
-Fecha=$(date +"%Y%m%d")
-Hora=$(date +"%H%M%S")
-File=$db"_BK-"
-fileExt=".sql.gz"
-guion="-"
-finalFile=$File$Fecha$guion$Hora$fileExt
 
 
 ## Ejecucion
@@ -55,7 +55,6 @@ case $verb in
   ;;
 esac
 
-#mysqldump --single-transaction --routines --quick -h $HOST -u $USER -p$PASS -B $db --verbose | gzip > $finalFile
 timeFin=$(date +"%T - %d/%m/%Y")
 pesoFile=$(du -h $finalFile | cut -f1)
 
@@ -65,7 +64,8 @@ echo ""
 echo ""
 echo " *** BACKUP TERMINADO ***"
 echo "- Inicio: " $timeInit
-echo "- Fin:    " $timeFin
-echo "- Peso:   " $pesoFile
-echo "- File:   " $finalFile
+echo "- Fin   : " $timeFin
+echo "- Peso  : " $pesoFile
+echo "- File  : " $finalFile
+echo "- Ruta  : " $DEST$finalFile
 echo ""
