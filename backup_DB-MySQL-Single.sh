@@ -68,3 +68,5 @@ echo "- Peso  : " $pesoFile
 echo "- File  : " $finalFile
 echo "- Ruta  : " $DEST$finalFile
 echo ""
+
+tree $DEST
